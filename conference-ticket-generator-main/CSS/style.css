@@ -1,0 +1,426 @@
+:root {
+  --neutral-0: hsl(0, 0%, 100%);
+  --neutral-300: hsl(252, 6%, 83%);
+  --neutral-500: hsl(245, 15%, 58%);
+  --neutral-700: hsl(245, 19%, 35%);
+  --neutral-900: hsl(248, 70%, 10%);
+  --orange-500: hsl(7, 88%, 67%);
+  --orange-700: hsl(7, 71%, 60%);
+  
+  --font-main: 'Inconsolata', monospace;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-main);
+  background: var(--neutral-900);
+  color: var(--neutral-0);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 2rem;
+  background-image: url('../assets/images/background-desktop.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.pattern {
+  position: fixed;
+  z-index: 10;
+  pointer-events: none;
+  width: 500px;
+  height: 500px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin: 0;
+  padding: 0;
+}
+
+/* Estampas do plano de fundo */
+.pattern-lines {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('../assets/images/pattern-lines.svg');
+  background-repeat: repeat;
+  background-size: contain;
+  opacity: 1;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.pattern-squiggly-bottom {
+  bottom: -258px;
+  left: 0;
+  z-index: 1;
+  background-image: url('../assets/images/pattern-squiggly-line-bottom-desktop.svg');
+}
+
+.pattern-squiggly-top {
+  top: 0;
+  right: 0;
+  background-image: url('../assets/images/pattern-squiggly-line-top.svg');
+}
+
+.logo-top-center {
+  position: fixed;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
+  width: 250px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-top-center img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+main {
+  width: 100%;
+  max-width: 750px;
+  padding: 2rem;
+  margin-top: 80px;
+}
+
+h1 {
+  font-size: clamp(2rem, 6vw, 2.5rem);
+  margin-bottom: 1rem;
+  color: var(--neutral-0);
+  text-align: center;
+}
+
+p {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--neutral-300);
+  font-size: 1.5rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+  width: 100%;
+  max-width: 550px;
+  margin: 0 auto;
+}
+
+label {
+  font-weight: 500;
+  margin-bottom: 0.3rem;
+}
+
+input {
+  padding: 0.8rem;
+  border: 1px solid var(--neutral-500);
+  border-radius: 8px;
+  font-size: 1rem;
+  width: 95%;
+  background: transparent;
+  color: var(--neutral-0);
+}
+
+input:focus {
+  border-color: var(--orange-500);
+  outline: none;
+}
+
+.error {
+  color: var(--orange-500);
+  font-size: 0.85rem;
+  margin-top: -0.8rem;
+  margin-bottom: -0.5rem;
+  display: none;
+}
+
+button {
+  background: var(--orange-500);
+  color: var(--neutral-900);
+  border: none;
+  border-radius: 8px;
+  padding: 1rem 2rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+button:hover {
+  background: var(--orange-700);
+}
+
+/* Botão de upload de avatar customizado */
+.upload-preview {
+  width: 48px;
+  height: 48px;
+  object-fit: cover;
+  margin-bottom: 0.5rem;
+  border: 2px solid var(--orange-500);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.10);
+  display: block;
+}
+
+.upload-area {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.custom-file-label {
+  width: 100%;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  margin-bottom: 0.5rem;
+}
+
+.upload-box {
+  width: 100%;
+  min-height: 120px;
+  border: 2px dashed var(--neutral-500);
+  border-radius: 12px;
+  background: rgba(255,255,255,0.03);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  transition: border-color 0.2s, background 0.2s;
+  position: relative;
+}
+
+.upload-box:hover, .custom-file-label:focus-within .upload-box {
+  border-color: var(--orange-500);
+  background: rgba(255,255,255,0.06);
+}
+
+.upload-icon {
+  width: 36px;
+  height: 36px;
+  opacity: 0.8;
+}
+
+.upload-text {
+  color: var(--neutral-300);
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.upload-desc {
+  color: var(--neutral-500);
+  font-size: 0.95rem;
+  margin-top: 0.3rem;
+  text-align: left;
+  width: 100%;
+  padding-left: 0.2rem;
+}
+
+.custom-file-label input[type="file"] {
+  display: none;
+}
+
+/* Ticket */
+#ticket {
+  display: none;
+  margin-top: 2rem;
+  padding: 2.5rem 2rem 2rem 8rem;
+  border-radius: 12px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  background-image: url('../assets/images/pattern-ticket.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  min-height: 420px;
+  max-width: 650px;
+  aspect-ratio: 16 / 9;
+  background-size: 100% 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#ticket #ticketAvatar {
+  position: absolute;
+  bottom: 5rem;
+  left: 2rem;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  z-index: 2;
+}
+
+#ticket .git-icon {
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+  width: 40px;
+  height: 40px;
+  opacity: 0.8;
+  z-index: 2;
+}
+
+#ticket .logo-icon {
+  position: absolute;
+  top: 0rem;
+  left: 2rem;
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+  opacity: 1;
+  z-index: 2;
+}
+
+#ticket h2 {
+  position: absolute;
+  bottom: 8rem;
+  left: 9rem;
+  padding: 1rem;
+  color: var(--orange-500);
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  word-break: break-word;
+}
+
+#ticket .git-icon {
+  position: absolute;
+  padding: 1rem;
+  bottom: 5rem;
+  left: 9rem;
+  width: 32px;
+  height: 32px;
+  opacity: 0.7;
+}
+
+#ticket .date-text {
+  position: absolute;
+  top: 6rem;
+  left: 2rem;
+  padding: 1rem;
+  margin: auto;
+  font-size: 1.1rem;
+  color: var(--neutral-300);
+}
+
+#ticket p {
+  position: absolute;
+  bottom: 3.2rem;
+  left: 11rem;
+  padding: 1rem;
+  font-size: 1.1rem;
+  word-break: break-word;
+  color: var(--neutral-0);
+  line-height: 1.4;
+  max-width: 90%;
+}
+
+/* Alterações para tablets */
+@media (max-width: 900px) {
+  body {
+    background-image: url('../assets/images/background-tablet.png');
+  }
+  .pattern-squiggly-bottom {
+  width: 140px;
+  height: 140px;
+  background-image: url('../assets/images/pattern-squiggly-line-bottom-mobile-tablet.svg');
+  bottom: 0;
+  left: 0;
+}
+ .pattern-squiggly-top {
+  width: 140px;
+  height: 140px;
+  background-image: url('../assets/images/pattern-squiggly-line-top.svg');
+  top: 0;
+  right: 0;
+}
+}
+
+/* Alterações para celulares */
+@media (max-width: 600px) {
+  body {
+    background-image: url('../assets/images/background-mobile.png');
+  }
+  .pattern-squiggly-bottom {
+    width: 80px;
+    height: 80px;
+    background-image: url('../assets/images/pattern-squiggly-line-bottom-mobile-tablet.svg');
+    bottom: 0;
+    left: 0;
+  }
+  .pattern-squiggly-top {
+    width: 80px;
+    height: 80px;
+    background-image: url('../assets/images/pattern-squiggly-line-top.svg');
+    top: 0;
+    right: 0;
+  }
+  main {
+    padding: 1rem;
+    margin-top: 120px;
+  }
+  .logo-top-center {
+    width: 120px;
+    height: 80px;
+    top: 12px;
+  }
+  #ticket {
+    padding: 1.2rem 0.5rem 0.5rem 4rem;
+    border-radius: 6px;
+    max-width: 98vw;
+    min-height: 220px;
+    background-size: 100% 100%;
+    font-size: 0.95rem;
+  }
+  #ticket #ticketAvatar {
+    width: 48px;
+    height: 48px;
+    bottom: 3rem;
+    left: 0.7rem;
+  }
+  #ticket h2 {
+    bottom: 3.5rem;
+    left: 4rem;
+    font-size: 1rem;
+    margin-bottom: 0.3rem;
+  }
+  #ticket p {
+    font-size: 0.85rem;
+    margin: 0.2rem 0;
+    bottom: 2rem;
+    left: 5rem;
+  }
+  #ticket .logo-icon {
+    top: 1rem;
+    left: 0.7rem;
+    width: 100px;
+    height: 100px;
+  }
+  #ticket .date-text {
+    top: 3.5rem;
+    left: 0.7rem;
+    font-size: 0.85rem;
+  }
+  #ticket .git-icon {
+    width: 24px;
+    height: 24px;
+    bottom: 2rem;
+    left: 3.5rem;
+  }
+}
